@@ -1,0 +1,16 @@
+metadata:
+  component: frontend
+  project_name: expense
+  appVersion: 2.0.0
+initContainers:
+  enabled: false
+containers:
+  name: frontend
+selector:
+  appName: frontend
+  type: LoadBalancer
+ports:
+  port: 80
+  targetPort: 80
+
+

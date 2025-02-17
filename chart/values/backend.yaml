@@ -1,0 +1,16 @@
+metadata:
+  component: backend
+  project_name: expense
+  appVersion: 2.0.0
+initContainers:
+  enabled: true
+containers:
+  name: backend
+selector:
+  appName: backend
+  type: ClusterIP
+ports:
+  port: 80
+  targetPort: 8080
+
+
