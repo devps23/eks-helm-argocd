@@ -3,14 +3,14 @@ kind: Pod
 metadata:
   name: {{ .Values.metadata.component }}
   labels:
-    appName: {{ .Values.metadata.project }}
+    appName: {{ .Values.selector.appName }}
     projectName: {{ .Chart.Name }}
 
 spec:
   {{- if .Values.initContainers.enabled }}
   volumes:
-   - name: vault-secret
-     emptyDir: { }
+    - name: vault-secret
+      emptyDir: { }
   initContainers:
     - name: get-secrets
       image: public.ecr.aws/u4j6q5s8/kubernetes-vault-init-container:1.2
@@ -34,11 +34,11 @@ spec:
       volumeMounts:
         - name: vault-secret
           mountPath: /data
- {{- end }}
+  {{- end }}
 
   containers:
     - name: {{ .Values.containers.name }}
-      image: public.ecr.aws/u4j6q5s8/{{ .Values.metadata.project }}-{{ .Values.metadata.component }}:{{ .Values.containers.dockerImage }}
+      image: public.ecr.aws/u4j6q5s8/{{ .Values.metadata.project }}-{{ .Values.metadata.component }}:1.0
       {{- if .Values.initContainers.enabled }}
       volumeMounts:
         - name: vault-secret
@@ -48,5 +48,4 @@ spec:
 
 #public.ecr.aws/u4j6q5s8/expense-backend:1.0
 #public.ecr.aws/u4j6q5s8/expense-backend:1.1
-
 

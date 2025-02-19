@@ -5,6 +5,7 @@ initContainers:
   enabled: false
 containers:
   name: frontend
+  image: 1.0
 selector:
   appName: frontend
   type: LoadBalancer

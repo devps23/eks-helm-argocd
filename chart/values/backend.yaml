@@ -5,6 +5,7 @@ initContainers:
   enabled: true
 containers:
   name: backend
+  image: 1.4
   dockerImage: 1.4
 selector:
   appName: backend
