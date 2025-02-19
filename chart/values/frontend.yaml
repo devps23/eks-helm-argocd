@@ -5,13 +5,15 @@ initContainers:
   enabled: false
 containers:
   name: frontend
-  image: 1.0
 selector:
   appName: frontend
   type: LoadBalancer
 ports:
   port: 80
   targetPort: 80
+
+image:
+  tag: 1.0
 
 
 
