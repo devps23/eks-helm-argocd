@@ -5,11 +5,13 @@ initContainers:
   enabled: true
 containers:
   name: backend
+  dockerImage: 1.4
 selector:
   appName: backend
   type: ClusterIP
 ports:
   port: 80
   targetPort: 8080
+
 
 
