@@ -1,7 +1,6 @@
 metadata:
   component: frontend
-  project_name: expense
-  appVersion: 2.0.0
+  project: expense
 initContainers:
   enabled: false
 containers:
