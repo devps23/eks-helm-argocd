@@ -17,3 +17,8 @@ if [ "$2" == "jobs" ]; then
     done
 fi
 
+
+ argocd login  --username admin --password $(argocd admin initial-password -n argocd | head -1) --insecure --grpc-web
+
+
+8ad2gOijgEJYKHog
