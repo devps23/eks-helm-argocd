@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.metadata.component }}
 spec:
   selector:
-    appName: {{ .Values.metadata.project }}
+    appName: {{ .Values.selector.appName }}
     projectName: {{ .Chart.Name }}
   ports:
     - name: http
@@ -12,7 +12,6 @@ spec:
       port: {{ .Values.ports.port }}
       targetPort: {{ .Values.ports.targetPort }}
   type: {{ .Values.selector.type }}
-
 
 
 #  ExpenseApp123----DB_PASS
