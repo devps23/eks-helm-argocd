@@ -5,7 +5,6 @@ initContainers:
   enabled: true
 containers:
   name: backend
-  image: 1.4
 selector:
   appName: backend
   type: ClusterIP

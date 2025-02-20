@@ -12,8 +12,6 @@ ports:
   port: 80
   targetPort: 80
 
-image:
-  tag: 1.0
 
 
 
