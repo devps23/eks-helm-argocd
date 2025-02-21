@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: {{ .Values.metadata.component }}
-
+  namespace: argocd
   labels:
     appName: {{ .Values.selector.appName }}
     projectName: {{ .Chart.Name }}
