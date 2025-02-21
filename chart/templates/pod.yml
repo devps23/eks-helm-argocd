@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: {{ .Values.metadata.component }}
-  namespace: argocd
+
   labels:
     appName: {{ .Values.selector.appName }}
     projectName: {{ .Chart.Name }}
@@ -39,7 +39,7 @@ spec:
 
   containers:
     - name: {{ .Values.containers.name }}
-      image: 041445559784.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.metadata.project }}-{{ .Values.metadata.component }}:{{ .Values.appVersion }}
+      image: 041445559784.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.metadata.project }}-{{ .Values.metadata.component }}:1.4
       {{- if .Values.initContainers.enabled }}
       volumeMounts:
         - name: vault-secret
