@@ -11,7 +11,7 @@ spec:
   {{- if .Values.initContainers.enabled }}
   volumes:
     - name: vault-secret
-      emptyDir: { }
+      emptyDir: {}
   initContainers:
     - name: get-secrets
       image: public.ecr.aws/u4j6q5s8/kubernetes-vault-init-container:1.2
