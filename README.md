@@ -16,3 +16,14 @@ cmds:
 * kubectl get replicaset -o wide
 * kubectl get pods -o wide yaml
 * kubectl get pods "pod-name" | grep image
+
+How to delete default namespace?
+
+kubectl delete -f infra-helm-chart/argo-dev.yaml -n default
+
+how to list all apps in argocd
+argocd app list
+
+* bash -x argo.sh ---- to fetch previous execution list
+
+* kubectl delete ingress argocd -n argocd
