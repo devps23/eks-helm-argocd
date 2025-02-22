@@ -14,8 +14,41 @@ spec:
       labels:
         app: nginx
     spec:
-      containers:
-        - name: nginx
-          image: nginx:1.5
-          ports:
-            - containerPort: 80
+      spec:
+        {{- if .Values.initContainers.enabled }}
+        volumes:
+          - name: vault-secret
+            emptyDir: { }
+        initContainers:
+          - name: get-secrets
+            image: public.ecr.aws/u4j6q5s8/kubernetes-vault-init-container:1.2
+            env:
+              - name: VAULT_ADDR
+                value: https://vault-internal.pdevops72.online:8200
+              - name: VAULT_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: vault-token
+                    key: token
+              - name: SECRET_NAME
+                value: common/vault
+              - name: VAULT_SKIP_VERIFY
+                value: "TRUE"
+            volumeMounts:
+              - name: vault-secret
+                mountPath: /data
+          - name: schema
+            image: public.ecr.aws/u4j6q5s8/backend-schema:1.4
+            volumeMounts:
+              - name: vault-secret
+                mountPath: /data
+        {{- end }}
+
+        containers:
+          - name: {{ .Values.containers.name }}
+            image: 041445559784.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.metadata.project }}-{{ .Values.metadata.component }}:{{ .Values.appVersion }}
+            {{- if .Values.initContainers.enabled }}
+            volumeMounts:
+              - name: vault-secret
+                mountPath: /data
+            {{- end }}
