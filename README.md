@@ -28,6 +28,9 @@ argocd app list
 
 * kubectl delete ingress argocd -n argocd
 * kubectl get pods "pod-name" -o yaml, to get pods with podname with yaml file
+
+
+
 * argocd app set frontend --parameter appVersion:2.0.2
 * argocd app sync frontend
 debugging steps
