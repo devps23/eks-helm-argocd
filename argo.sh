@@ -23,4 +23,8 @@ if [ "$2" == "jobs" ]; then
     done
 fi
 
+ --skip-test-tls
 
+argocd app create backend --repo https://github.com/devps23/eks-helm-argocd.git --path chart --upsert --dest-server https://kubernetes.default.svc --dest-namespace default.svc --grpc-web --values values/${app}.yaml
+
+argocd app create backend --repo https://github.com/devps23/eks-helm-argocd.git --path chart --upsert --dest-server https://kubernetes.default.svc --dest-namespace default.svc --insecure --skip-test-tls --grpc-web --values values/backend.yml
