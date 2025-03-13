@@ -6,7 +6,6 @@ metadata:
   labels:
     appName: {{ .Values.selector.appName }}
     projectName: {{ .Chart.Name }}
-
 spec:
   {{- if .Values.initContainers.enabled }}
   volumes:
